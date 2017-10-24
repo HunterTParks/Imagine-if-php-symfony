@@ -34,6 +34,8 @@ class DefaultController extends Controller
      */
     public function authenticationAction(Request $request)
     {
-      
+        return $this->render('default/index.php', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ));
     }
 }
