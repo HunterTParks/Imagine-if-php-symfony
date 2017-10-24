@@ -6,7 +6,6 @@
 
   $config = new PHPAuth\Config($dbh);
   $auth   = new PHPAuth\Auth($dbh, $config);
-
   if(!$auth->isLogged()) {
     header('HTTP/1.0 403 Forbidden');
     echo "Forbidden";
@@ -17,7 +16,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>Testing Title</title>
   </head>
   <body>
