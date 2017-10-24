@@ -1,6 +1,11 @@
 <?php
   include("Config.php");
   include("Auth.php");
+
+  $dbh = new PDO("mysql:host=localhost;dbname=phpauth", "username", "password");
+
+  $config = new PHPAuth\Config($dbh);
+  $auth   = new PHPAuth\Auth($dbh, $config);
 ?>
 <!DOCTYPE html>
 <html>
