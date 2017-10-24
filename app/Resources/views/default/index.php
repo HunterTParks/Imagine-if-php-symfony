@@ -1,8 +1,5 @@
 <?php
-  include("Config.php");
-  include("Auth.php");
-
-  echo $msg;
+  
 ?>
 <!DOCTYPE html>
 <html>

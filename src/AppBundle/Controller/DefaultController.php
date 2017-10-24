@@ -1,10 +1,10 @@
 <?php
-
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use PDO;
 
 class DefaultController extends Controller
 {
@@ -38,15 +38,17 @@ class DefaultController extends Controller
         $username = "hunter";
         $password = "hunter";
 
-        //Create Connection
-        $conn = mysqli_connect($servername, $username, $password);
-
-        //Test Connection
-        if(!$conn) {
-            $msg = "Connection Failed: " . mysqli_connect_error();
-        } else {
-            $msg = "Connection Success!";
+        try {
+          //Create Connection
+          $db = new PDO('mysql:host=localhost;dbname=cameron_database;', 'hunter', 'hunter');
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $msg = "Connection Successful";
         }
+        catch(PDOException $e) {
+          $msg = "Connection Failed";
+        }
+
+        $conn->close();
         return $this->render('default/index.php', array(
            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
            'msg' => $msg,
