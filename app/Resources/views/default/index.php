@@ -2,7 +2,7 @@
   include("Config.php");
   include("Auth.php");
 
-  
+  echo $msg;
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,6 +10,6 @@
     <title>Testing Title</title>
   </head>
   <body>
-    HEY THERE YOU GOT THERE
+    Hello World!
   </body>
 </html>

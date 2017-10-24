@@ -34,9 +34,23 @@ class DefaultController extends Controller
      */
      public function authenticationAction(Request $request)
      {
-         return $this->render('default/index.php', array(
-             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-         ));
+        $servername = "localhost";
+        $username = "hunter";
+        $password = "hunter";
+
+        //Create Connection
+        $conn = mysqli_connect($servername, $username, $password);
+
+        //Test Connection
+        if(!$conn) {
+            $msg = "Connection Failed: " . mysqli_connect_error();
+        } else {
+            $msg = "Connection Success!";
+        }
+        return $this->render('default/index.php', array(
+           'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+           'msg' => $msg,
+        ));
      }
 
 }
