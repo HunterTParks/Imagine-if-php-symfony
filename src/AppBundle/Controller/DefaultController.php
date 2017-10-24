@@ -30,12 +30,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/testing" name="phpauth")
+     * @Route("/authentication", name="phpauth")
      */
-    public function authenticationAction(Request $request)
-    {
-        return $this->render('default/index.php', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ));
-    }
+     public function authenticationAction(Request $request)
+     {
+         return $this->render('default/index.php', array(
+             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+         ));
+     }
+
 }
