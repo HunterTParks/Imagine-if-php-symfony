@@ -6,6 +6,13 @@
 
   $config = new PHPAuth\Config($dbh);
   $auth   = new PHPAuth\Auth($dbh, $config);
+
+  if(!$auth->isLogged()) {
+    header('HTTP/1.0 403 Forbidden');
+    echo "Forbidden";
+
+    exit();
+  }
 ?>
 <!DOCTYPE html>
 <html>
