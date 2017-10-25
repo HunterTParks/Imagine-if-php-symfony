@@ -44,6 +44,7 @@ class DefaultController extends Controller
           $conn = new PDO('mysql:host=localhost:8889;dbname=cameron_database;', 'hunter', 'hunter');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $msg = "Connection Successful";
+          $auth = new 
         }
         catch(PDOException $e) {
           $msg = "Connection Failed";
