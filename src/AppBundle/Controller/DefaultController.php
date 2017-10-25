@@ -34,7 +34,6 @@ class DefaultController extends Controller
      */
      public function authenticationAction(Request $request)
      {
-
         $servername = "localhost:8889";
         $username = "hunter";
         $password = "hunter";
@@ -44,7 +43,14 @@ class DefaultController extends Controller
           $conn = new PDO('mysql:host=localhost:8889;dbname=cameron_database;', 'hunter', 'hunter');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $msg = "Connection Successful";
-          $auth = new 
+          $config = new PHPAuth\Config($conn);
+          $auth = new Auth($conn, $config);
+          $email = $_GET["email"];
+          $passwd = $_GET["passwd"];
+          $results = $auth->login($email, $passwd);
+          if(!$results['error']) {
+            setcookie('authIDD', $result["hash"], $result["expire"], '/authentication');
+          }
         }
         catch(PDOException $e) {
           $msg = "Connection Failed";
