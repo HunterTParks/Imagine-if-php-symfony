@@ -50,7 +50,7 @@ class DefaultController extends Controller
 
         $conn = NULL;
 
-        return $this->render('default/index.php', array(
+        return $this->render('default/authenticationTesting.html.twig', array(
            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
            'msg' => $msg,
         ));
