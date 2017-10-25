@@ -34,13 +34,13 @@ class DefaultController extends Controller
      */
      public function authenticationAction(Request $request)
      {
-        $servername = "localhost";
+        $servername = "localhost:8889";
         $username = "hunter";
         $password = "hunter";
 
         try {
           //Create Connection
-          $db = new PDO('mysql:host=localhost;dbname=cameron_database;', 'hunter', 'hunter');
+          $conn = new PDO('mysql:host=localhost:8889;dbname=cameron_database;', 'hunter', 'hunter');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $msg = "Connection Successful";
         }
@@ -48,7 +48,8 @@ class DefaultController extends Controller
           $msg = "Connection Failed";
         }
 
-        $conn->close();
+        $conn = NULL;
+
         return $this->render('default/index.php', array(
            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
            'msg' => $msg,
