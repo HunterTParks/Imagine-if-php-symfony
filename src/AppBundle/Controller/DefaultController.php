@@ -34,6 +34,7 @@ class DefaultController extends Controller
      */
      public function authenticationAction(Request $request)
      {
+
         $servername = "localhost:8889";
         $username = "hunter";
         $password = "hunter";
