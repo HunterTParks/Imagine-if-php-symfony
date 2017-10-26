@@ -5,6 +5,7 @@ require_once __DIR__.'\..\..\..\vendor\autoload.php';
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use PDO;
 
 class DefaultController extends Controller
@@ -41,7 +42,7 @@ class DefaultController extends Controller
     /**
      * @Route("/register", name="user_registration")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder = NULL)
     {
         // 1) build the form
         $user = new User();
