@@ -1,6 +1,9 @@
 namespace AppBundle\Entity;
 
-class User
+use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping as ORM;
+
+class User implements UserInterface
 {
     private $username;
     private $imageUrl;
