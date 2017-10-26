@@ -4,7 +4,7 @@ security:
 
     encoders:
         AppBundle\Entity\User:
-            Algorithm: bcrypt
+            algorithm: bcrypt
 
     providers:
         our_db_provider:
