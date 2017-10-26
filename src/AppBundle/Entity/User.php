@@ -28,6 +28,11 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $plainPassword;
+    
+    /**
      * @ORM\Column(type="string", length=60, unique=true)
      */
     private $email;
@@ -59,6 +64,16 @@ class User implements UserInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
     }
 
     public function getRoles()
