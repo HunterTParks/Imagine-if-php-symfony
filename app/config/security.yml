@@ -2,8 +2,15 @@
 # https://symfony.com/doc/current/security.html
 security:
 
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        AppBundle\Entity\User:
+            Algorithm: bcrypt
+
     providers:
+        our_db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
         in_memory:
             memory: ~
 
@@ -14,7 +21,16 @@ security:
             security: false
 
         main:
+            pattern:    ^/
             anonymous: ~
+            http_basic: ~
+            provider: our_db_provider
+
+    access_control:
+    # require ROLE_ADMIN for /admin*
+    - { path: ^/admin, roles: ROLE_ADMIN }
+
+
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
