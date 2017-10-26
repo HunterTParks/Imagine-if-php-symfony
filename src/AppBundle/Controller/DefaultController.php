@@ -1,11 +1,10 @@
 <?php
 namespace AppBundle\Controller;
 
+require_once __DIR__.'\..\..\..\vendor\autoload.php';
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use phpauth\phpauth\Auth;
-use phpauth\phpauth\Config;
 use PDO;
 
 class DefaultController extends Controller
@@ -32,6 +31,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/admin")
+     */
+    public function adminAction()
+    {
+        return new Response('<html><body>Admin page!</body></html>');
+    }
+
+    /**
      * @Route("/authentication", name="phpauth")
      */
      public function authenticationAction(Request $request)
@@ -45,10 +52,16 @@ class DefaultController extends Controller
           $conn = new PDO('mysql:host=localhost:8889;dbname=cameron_database;', 'hunter', 'hunter');
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
           $msg = "Connection Successful";
+
+          //Enable PHPAuth and its config file
           $config = new PHPAuth\Config($conn);
           $auth = new Auth($conn, $config);
+
+          //Get email and password
           $email = $_GET["email"];
           $passwd = $_GET["passwd"];
+
+          //Check for authorization
           $results = $auth->login($email, $passwd);
           if(!$results['error']) {
             setcookie('authIDD', $result["hash"], $result["expire"], '/authentication');
