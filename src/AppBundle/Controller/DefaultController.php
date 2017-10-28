@@ -55,15 +55,14 @@ class DefaultController extends Controller
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            //$encoders = array($user);
-            //$encoder = new EncoderFactory($encoders);
-            //$passwordEncoder = new UserPasswordEncoder($encoder);
+            $encoders = array($user);
+            $encoder = new EncoderFactory($encoders);
+            $passwordEncoder = new UserPasswordEncoder($encoder);
 
-            //$BCrypt = new BCryptPasswordEncoder(31);
+            $BCrypt = new BCryptPasswordEncoder(10);
 
             // 3) Encode the password (you could also do this via Doctrine listener)
-            //$password = $BCrypt->encodePassword($user->getPlainPassword(), $user->getSalt());
-            $password = "abcd1234abcd1234abcd1234";
+            $password = $BCrypt->encodePassword($user->getPlainPassword(), $user->getSalt());
             $user->setPassword($password);
 
             // 4) save the User!
