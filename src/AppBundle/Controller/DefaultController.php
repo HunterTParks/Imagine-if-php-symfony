@@ -59,10 +59,11 @@ class DefaultController extends Controller
             //$encoder = new EncoderFactory($encoders);
             //$passwordEncoder = new UserPasswordEncoder($encoder);
 
-            $BCrypt = new BCryptPasswordEncoder(31);
+            //$BCrypt = new BCryptPasswordEncoder(31);
 
             // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $BCrypt->encodePassword($user->getPlainPassword(), $user->getSalt());
+            //$password = $BCrypt->encodePassword($user->getPlainPassword(), $user->getSalt());
+            $password = "abcd1234abcd1234abcd1234";
             $user->setPassword($password);
 
             // 4) save the User!
@@ -73,7 +74,7 @@ class DefaultController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('authentication');
+            return $this->redirectToRoute('/authentication');
         }
 
         return $this->render(
