@@ -62,7 +62,7 @@ class User implements UserInterface
     {
         // you *may* need a real salt depending on your encoder
         // see section on salt below
-        return null;
+        return "TESTSTRINGTESTSTRINGTE";
     }
 
     public function getPassword()
