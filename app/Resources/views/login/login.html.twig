@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Imagine If Login</title>
-  </head>
-  <body>
-    <form action="/authentication">
-      <input type="email" name="email">EMAIL</input>
-      <input type="password" name="passwd">PASSWORD</input>
-      <button type="submit" name="button">SUBMIT</button>
-    </form>
-  </body>
-</html>
+{{ form_start(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.plainPassword.first) }}
+
+    <button type="submit">Register!</button>
+{{ form_end(form) }}
