@@ -5,7 +5,9 @@ require_once __DIR__.'\..\..\..\vendor\autoload.php';
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\EncoderFactory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
 use PDO;
@@ -15,7 +17,6 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
@@ -45,7 +46,7 @@ class DefaultController extends Controller
     /**
      * @Route("/register", name="user_registration")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $encoder)
+    public function registerAction(Request $request)
     {
         // 1) build the form
         $user = new User();
@@ -54,9 +55,14 @@ class DefaultController extends Controller
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            //$encoders = array($user);
+            //$encoder = new EncoderFactory($encoders);
+            //$passwordEncoder = new UserPasswordEncoder($encoder);
+
+            $BCrypt = new BCryptPasswordEncoder(31);
 
             // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $password = $BCrypt->encodePassword($user->getPlainPassword(), $user->getSalt());
             $user->setPassword($password);
 
             // 4) save the User!
