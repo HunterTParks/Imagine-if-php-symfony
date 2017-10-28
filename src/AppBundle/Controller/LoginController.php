@@ -22,14 +22,19 @@ class LoginController extends Controller
 
       if($form->isSubmitted() && $form->isValid())
       {
-        
+          $user = new User();
+
+          $user->__destruct();
+      }
+      else
+      {
+          return $this->render('login/login.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'last_username' => $lastUsername,
+            'error_message' => $errorMessage,
+          ));
       }
 
-      return $this->render('login/login.html.twig', array(
-          'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-          'last_username' => $lastUsername,
-          'error_message' => $errorMessage,
-      ));
     }
 }
 
