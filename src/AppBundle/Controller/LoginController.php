@@ -20,11 +20,13 @@ class LoginController extends Controller
       //Get Last username entered
       $lastUsername = $authUtils->getLastUsername();
 
+      $user = new User();
+      $form = $this->createForm(UserType::class, $user);
+
+      $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
-          $user = new User();
-
-          $user->__destruct();
+          
       }
       else
       {
