@@ -1,4 +1,4 @@
-// src/AppBundle/Security/TokenAuthenticator.php
+<?php
 namespace AppBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
