@@ -7,6 +7,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use AppBundle\Form\UserLoginType;
 use AppBundle\Entity\User;
+use AppBundle\Entity\UserRepository;
+use Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider;
+use Symfony\Component\Security\Core\User\UserChecker;
+use Symfony\Component\Security\Core\User\InMemoryUserProvider;
+use Symfony\Component\Security\Core\Encoder\EncoderFactory;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use PDO;
 
 class LoginController extends Controller
@@ -29,7 +35,31 @@ class LoginController extends Controller
       $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
+          $userRepo = new UserRepository();
+          $user = $userRepo->loadUserByUserName($form->email);
+          if($user == NULL)
+              return $this->render(
+                  'login\login.html.twig',
+                  array('form' => $form->createView())
+              );
 
+          // for some extra checks: is account enabled, locked, expired, etc.
+          $userChecker = new UserChecker();
+
+          $defaultEncoder = new MessageDigestPasswordEncoder('bcrypt', true, 500);
+          $encoders = array(
+              user::Class => $defaultEncoder,
+          );
+          $encoderFactory = new EncoderFactory($encoders);
+
+          $provider = new DaoAuthenticationProvider(
+              $user,
+              $userChecker,
+              'secured_area',
+              $encoderFactory
+          );
+
+          $provider->authenticate($unauthenticatedToken);
       }
       return $this->render(
           'login\login.html.twig',
