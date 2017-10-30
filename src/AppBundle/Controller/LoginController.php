@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function loginFunction(Request $request)
     {
       $user = new User();
-      $form = $this->createForm(UserType::class, $user);
+      $form = $this->createForm(UserLoginType::class, $user);
 
       //Get error | IF THERE IS ONE
       $authUtils = $this->get('security.authentication_utils');
