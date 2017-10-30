@@ -16,6 +16,9 @@ class LoginController extends Controller
      */
     public function loginFunction(Request $request)
     {
+      $user = new User();
+      $form = $this->createForm(UserType::class, $user);
+
       //Get error | IF THERE IS ONE
       $authUtils = $this->get('security.authentication_utils');
       $errorMessage = $authUtils->getLastAuthenticationError();
@@ -23,22 +26,15 @@ class LoginController extends Controller
       //Get Last username entered
       $lastUsername = $authUtils->getLastUsername();
 
-      $user = new User();
-      $form = $this->createForm(UserType::class, $user);
-
       $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
 
       }
-      else
-      {
-          return $this->render('login/login.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'last_username' => $lastUsername,
-            'error_message' => $errorMessage,
-          ));
-      }
+      return $this->render(
+          'login\login.html.twig',
+          array('form' => $form->createView())
+      );
 
     }
 }
