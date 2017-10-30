@@ -5,10 +5,17 @@ security:
         AppBundle\Entity\User: bcrypt
 
     providers:
+        chain_provider:
+            chain:
+                providers: [our_db_provider, db_email]
         our_db_provider:
             entity:
                 class: AppBundle:User
                 property: username
+        db_email:
+            entity:
+                class: AppBundle:User
+                property: email
         in_memory:
             memory: ~
 
