@@ -59,7 +59,14 @@ class LoginController extends Controller
               $encoderFactory
           );
 
-          $provider->authenticate($unauthenticatedToken);
+          $token = $provider->authenticate($unauthenticatedToken);
+
+          if($token->isAuthenticated())
+          {
+              return $this->render(
+                  'default\index.html.twig',
+              )
+          }
       }
       return $this->render(
           'login\login.html.twig',
