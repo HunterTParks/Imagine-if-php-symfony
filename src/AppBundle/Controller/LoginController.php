@@ -12,9 +12,10 @@ class LoginController extends Controller
     /**
      * @Route("/login", name="login")
      */
-    public function loginFunction(Request $request, AuthenticationUtils $authUtils)
+    public function loginFunction(Request $request)
     {
       //Get error | IF THERE IS ONE
+      $authUtils = $this->get('security.authentication_utils');
       $errorMessage = $authUtils->getLastAuthenticationError();
 
       //Get Last username entered
@@ -26,7 +27,7 @@ class LoginController extends Controller
       $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
-          
+
       }
       else
       {
