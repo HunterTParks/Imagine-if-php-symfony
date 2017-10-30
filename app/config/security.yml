@@ -29,7 +29,7 @@ security:
             pattern:    ^/
             anonymous: ~
             http_basic: ~
-            provider: our_db_provider
+            provider: chain_provider
             form_login:
                 login_path: login
                 check_path: login
