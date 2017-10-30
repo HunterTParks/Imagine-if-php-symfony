@@ -8,5 +8,8 @@
     use Doctrine\ORM\EntityRepository;
     use Doctrine\ORM\NoResultException;
 
-    
+    class UserRepository extends EntityRepository implements UserLoaderInterface
+    {
+      
+    }
 ?>
