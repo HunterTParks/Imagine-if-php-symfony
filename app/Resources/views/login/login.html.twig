@@ -1,9 +1,25 @@
 {{ form_start(form) }}
-    {{ form_row(form.email) }}
+    {{ form_row(form.username) }}
     {{ form_row(form.plainPassword) }}
 
     <button type="submit">Login!</button>
 {{ form_end(form) }}
 {% if TESTING is defined %}
   <p>TESTING</p>
+{% endif %}
+{% if errorMessage is defined %}
+
+{% endif %}
+
+<form action="{{ path('login') }}" method="post">
+    <label for="username">UserName</label>
+    <input type="text" name="_username" id="username" value={{lastUsername}}>
+
+    <label for="password">Password</label>
+    <input type="password" name="_password" id="password">
+    <button type="submit" name="button">Connect</button>
+</form>
+
+{% if errors %}
+  {{ errors.messageKey }}
 {% endif %}

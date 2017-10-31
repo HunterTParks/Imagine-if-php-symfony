@@ -7,7 +7,7 @@ security:
     providers:
         chain_provider:
             chain:
-                providers: [our_db_provider, db_email]
+                providers: our_db_provider
         our_db_provider:
             entity:
                 class: AppBundle:User
