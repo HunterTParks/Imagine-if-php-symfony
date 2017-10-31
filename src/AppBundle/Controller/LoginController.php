@@ -31,47 +31,7 @@ class LoginController extends Controller
 
       //Get Last username entered
       $lastUsername = $authUtils->getLastUsername();
-      // $form->handleRequest($request);
-      // if($form->isSubmitted() && $form->isValid()) {
-      //     return $this->render('default\index.html.twig', array(
-      //         'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-      //     ));
-      //     $userRepo = new UserRepository();
-      //     $user = $userRepo->getUserFromDatabase($form->email);
-      //
-      //     $TESTING = $user->getName();
-      //     if($user == NULL)
-      //         return $this->render('login\login.html.twig', array(
-      //           'form' => $form->createView(),
-      //           'testing' => $TESTING
-      //         ));
-      //
-      //     // for some extra checks: is account enabled, locked, expired, etc.
-      //     $userChecker = new UserChecker();
-      //
-      //     $defaultEncoder = new MessageDigestPasswordEncoder('bcrypt', true, 500);
-      //     $encoders = array(
-      //         user::Class => $defaultEncoder,
-      //     );
-      //     $encoderFactory = new EncoderFactory($encoders);
-      //
-      //     $provider = new DaoAuthenticationProvider(
-      //         $user,
-      //         $userChecker,
-      //         'secured_area',
-      //         $encoderFactory
-      //     );
-      //
-      //     $token = $provider->authenticate($unauthenticatedToken);
-      //
-      //     if($token->isAuthenticated())
-      //     {
-      //         return $this->render('default\index.html.twig', array(
-      //             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-      //         ));
-      //     }
-      // }
-      $TESTING = "TESTING";
+    
       return $this->render('login\login.html.twig', array(
         'form' => $form->createView(),
         'errors' => $errors,
