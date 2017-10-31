@@ -11,8 +11,8 @@ use Symfony\Component\Security\Core\User\InMemoryUserProvider;
 use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 use AppBundle\Form\UserLoginType;
+use AppBundle\Repository\UserRepository;
 use AppBundle\Entity\User;
-use AppBundle\Entity\UserRepository;
 use PDO;
 
 class LoginController extends Controller
@@ -36,12 +36,12 @@ class LoginController extends Controller
       if($form->isSubmitted() && $form->isValid())
       {
           $userRepo = new UserRepository();
-          $user = $userRepo->loadUserByUserName($form->email);
+          $user = $userRepo->getUserFromDatabase($form->email);
           if($user == NULL)
-              return $this->render(
-                  'login\login.html.twig',
-                  array('form' => $form->createView())
-              );
+              return $this->render('login\login.html.twig',array(
+                'form' => $form->createView(),
+                'testing' => 'TESTING',
+              ));
 
           // for some extra checks: is account enabled, locked, expired, etc.
           $userChecker = new UserChecker();
