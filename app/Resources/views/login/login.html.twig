@@ -2,5 +2,8 @@
     {{ form_row(form.email) }}
     {{ form_row(form.plainPassword) }}
 
-    <button type="submit">Register!</button>
+    <button type="submit">Login!</button>
 {{ form_end(form) }}
+{% if TESTING is defined %}
+  <p>TESTING</p>
+{% endif %}
