@@ -31,13 +31,21 @@ class LoginController extends Controller
 
       //Get Last username entered
       $lastUsername = $authUtils->getLastUsername();
-    
+
       return $this->render('login\login.html.twig', array(
         'form' => $form->createView(),
         'errors' => $errors,
         'lastUsername' => $lastUsername
       ));
 
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logoutFunction(Request $request)
+    {
+      
     }
 }
 
