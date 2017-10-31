@@ -25,9 +25,15 @@ security:
                 login_path: login
                 check_path: login
 
+            logout:
+                path: /logout
+                target: /
+
     access_control:
     # require ROLE_ADMIN for /admin*
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
 
 
             # activate different ways to authenticate
