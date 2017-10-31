@@ -1,12 +1,22 @@
-<form action="{{ path('login') }}" method="post">
-    <label for="username">UserName</label>
-    <input type="text" name="_username" id="username" value={{lastUsername}}>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Imagine If Login</title>
+  </head>
+  <body>
+    <form action="{{ path('login') }}" method="post">
+      <label for="username">UserName</label>
+      <input type="text" name="_username" id="username" value={{lastUsername}}>
 
-    <label for="password">Password</label>
-    <input type="password" name="_password" id="password">
-    <button type="submit" name="button">Connect</button>
-</form>
-
-{% if errors %}
-  {{ errors.messageKey }}
-{% endif %}
+      <label for="password">Password</label>
+      <input type="password" name="_password" id="password">
+      <button type="submit" name="button">Connect</button>
+    </form>
+    {% if errors %}
+    {{ errors.messageKey }}
+    {% endif %}
+  </body>
+</html>
