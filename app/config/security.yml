@@ -5,19 +5,10 @@ security:
         AppBundle\Entity\User: bcrypt
 
     providers:
-        chain_provider:
-            chain:
-                providers: our_db_provider
         our_db_provider:
             entity:
                 class: AppBundle:User
-                property: username
-        db_email:
-            entity:
-                class: AppBundle:User
                 property: email
-        in_memory:
-            memory: ~
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -29,7 +20,7 @@ security:
             pattern:    ^/
             anonymous: ~
             http_basic: ~
-            provider: chain_provider
+            provider: our_db_provider
             form_login:
                 login_path: login
                 check_path: login
