@@ -24,15 +24,9 @@
         public function loadAllUsers()
         {
             $isActive = 1;
-            //$repo = $this->getDoctrine()->getRepository(user::class);
             return $this->findBy(
                 array('isActive' => '1')
             );
-            // return $this->createQueryBuilder('u')
-            //       ->where('u.isActive = :isActive')
-            //       ->setParameter('isActive', $isActive)
-            //       ->getQuery()
-            //       ->getOneOrNullResult();
         }
     }
 ?>
