@@ -21,13 +21,14 @@
 {% endblock %}
 {% block javascript %}
 <script type="text/javascript">
+
     $("#grid").jsGrid({
         filtering: true,
         editing: false,
         sorting: true,
         autoload: true,
 
-        controller: users,
+        controller: db,
 
         fields: [
             { name: "username", type: "text", textField: "Username" },
