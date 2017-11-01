@@ -24,7 +24,7 @@
         public function loadAllUsers()
         {
             return $this->createQueryBuilder('u')
-                  ->where('u.is_active = 1')
+                  ->where('u.isActive = 1')
                   ->getQuery()
                   ->getOneOrNullResult();
         }
