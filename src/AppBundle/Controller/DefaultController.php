@@ -82,7 +82,10 @@ class DefaultController extends Controller
      */
     public function guildListAction(Request $request)
     {
-        $array = $userRepo->loadAllUsers();
+        $array = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->loadAllUsers();
+            
         return $this->render('default/guildies.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'users' => $array,
