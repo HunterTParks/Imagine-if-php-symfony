@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
+use AppBundle\Repository\UserRepository;
 use PDO;
 
 class DefaultController extends Controller
@@ -79,6 +80,7 @@ class DefaultController extends Controller
      */
     public function guildListAction(Request $request)
     {
+
         return $this->render('default/guildies.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ));
