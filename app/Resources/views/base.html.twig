@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        {% block stylesheets %}{% endblock %}
-        <a href="{{ logout_path() }}">logout</a>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="/css/master.css">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}
-            <a href="{{ logout_path() }}"></a>
+        {% block content %}
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
