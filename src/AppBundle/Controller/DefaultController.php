@@ -75,6 +75,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/guildies", name="guildies")
+     */
+    public function guildListAction(Request $request)
+    {
+        return $this->render('default/guildies.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ));
+    }
+
+    /**
      * @Route("/authentication", name="phpauth")
      */
      public function authenticationAction(Request $request)
