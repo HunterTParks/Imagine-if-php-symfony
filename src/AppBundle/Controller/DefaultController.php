@@ -36,14 +36,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/admin")
-     */
-    public function adminAction()
-    {
-        return new Response('<html><body>Admin page!</body></html>');
-    }
-
-    /**
      * @Route("/register", name="user_registration")
      */
     public function registerAction(Request $request)
