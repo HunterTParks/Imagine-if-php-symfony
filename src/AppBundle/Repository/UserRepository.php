@@ -20,5 +20,10 @@
                 ->getQuery()
                 ->getOneOrNullResult();
         }
+
+        public function loadAllUsers()
+        {
+          
+        }
     }
 ?>
