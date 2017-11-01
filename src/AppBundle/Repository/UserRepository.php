@@ -23,8 +23,10 @@
 
         public function loadAllUsers()
         {
+            $isActive = 1;
             return $this->createQueryBuilder('u')
-                  ->where('u.isActive = 1')
+                  ->where('u.isActive = :isActive')
+                  ->setParameter('isActive', $isActive)
                   ->getQuery()
                   ->getOneOrNullResult();
         }
