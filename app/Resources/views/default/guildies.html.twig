@@ -15,5 +15,9 @@
 {% endblock %}
 {% block javascript %}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
-    
+    {% javascripts
+        '@testingAgain/Resources/scripts/grid_scripts.js'
+    %}
+      <script type="text/javascript" src={{ asset_url }}></script>
+    {% endjavascripts %}
 {% endblock %}
