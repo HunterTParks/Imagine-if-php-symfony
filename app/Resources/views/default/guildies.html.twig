@@ -13,9 +13,9 @@
       <p>No users found</p>
     {% endfor %}
 {% endblock %}
-{% javascripts
+{% block javascripts
     '@testingAgain/Resources/scripts/grid_scripts.js'
 %}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <script type="text/javascript" src={{ asset_url }}></script>
-{% endjavascripts %}
+{% endblock %}
