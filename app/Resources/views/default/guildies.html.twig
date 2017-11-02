@@ -1,45 +1,46 @@
 {% extends 'base.html.twig' %}
 {% block stylesheet %}
+    {{ parent() }}
     <link rel="stylesheet" href="/css/master.css">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
 {% endblock %}
 {% block content %}
-  <div id="grid"></div>
-  {% for user in users %}
-    <p>{{ user.username }}</p>
-  {% else %}
-    <p>No users found</p>
-  {% endfor %}
+    <div id="grid"></div>
+    {% for user in users %}
+      <p>{{ user.username }}</p>
+    {% else %}
+      <p>No users found</p>
+    {% endfor %}
 {% endblock %}
-{% block javascript %}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
-<script type="text/javascript">
-    $(function(){
-        var db = {
-            loadData: function(filter) {
-                return $.grep(this.users, function(user) {
-                    return (!filter.username || user.username.indexOf(filter.username) > -1);
-                });
+    {% block javascript %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var db = {
+                loadData: function(filter) {
+                    return $.grep(this.users, function(user) {
+                        return (!filter.username || user.username.indexOf(filter.username) > -1);
+                    });
+                }
             }
-        }
 
-        db.users = "<?php echo $users ?>";
+            db.users = "<?php echo $users ?>";
 
-        $("#grid").jsGrid({
-          filtering: true,
-          editing: false,
-          sorting: true,
-          autoload: true,
+            $("#grid").jsGrid({
+              filtering: true,
+              editing: false,
+              sorting: true,
+              autoload: true,
 
-          controller: "<?php echo $users ?>",
+              controller: "<?php echo $users ?>",
 
-          fields: [
-            { name: "username", type: "text", textField: "Username" },
-            { name: "email", type: "text", textField: "Email" },
-            { name: "isActive", type: "number", textField: "is Active" }
-          ]
+              fields: [
+                { name: "username", type: "text", textField: "Username" },
+                { name: "email", type: "text", textField: "Email" },
+                { name: "isActive", type: "number", textField: "is Active" }
+              ]
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}
