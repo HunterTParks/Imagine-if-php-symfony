@@ -28,8 +28,10 @@
                     return (!filter.username || user.username.indexOf(filter.username) > -1);
                 });
             }
-
         }
+
+        db.users = "<?php echo $users ?>";
+        
         $("#grid").jsGrid({
           filtering: true,
           editing: false,
