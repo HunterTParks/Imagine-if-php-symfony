@@ -6,12 +6,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
 {% endblock %}
 {% block content %}
-  {% if users %}
-    TESTING
-  {% endif %}
-  {% if test is defined %}
-    {{ test }}
-  {% endif %}
   <div id="grid"></div>
   {% for user in users %}
     <p>{{ user.username }}</p>
@@ -31,7 +25,7 @@
         }
 
         db.users = "<?php echo $users ?>";
-        
+
         $("#grid").jsGrid({
           filtering: true,
           editing: false,
