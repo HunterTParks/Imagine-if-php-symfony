@@ -24,7 +24,9 @@
     $(function(){
         var db = {
             loadData: function(filter) {
-                
+                return $.grep(this.users, function(user) {
+                    return (!filter.username || user.username.indexOf(filter.username) > -1);
+                });
             }
 
         }
