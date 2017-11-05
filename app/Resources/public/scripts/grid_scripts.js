@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  aler("testing");
   var db = {
     loadData: function(filter) {
       return $.grep(this.users, function(user) {
