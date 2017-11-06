@@ -98,12 +98,13 @@ class DefaultController extends Controller
         $encoder = array(new jsonEncoder());
         $normalizer = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizer, $encoder);
-        $array = $serializer->serialize($array, 'json');
+        $serializedArray = $serializer->serialize($array, 'json');
 
         return $this->render('default/guildies.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'users' => $array,
             'test' => $test,
+            'serial' => $serializedArray
         ));
     }
 
