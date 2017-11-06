@@ -18,4 +18,7 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    {% javascripts '%kernel.root_dir%/Resources/public/scripts/list_scripts/*'%}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
