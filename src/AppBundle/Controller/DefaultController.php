@@ -9,6 +9,9 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
@@ -91,10 +94,16 @@ class DefaultController extends Controller
         {
             $test = "TEST";
         }
+
+        $encoders = array(new jsonEncoder());
+        $normalizer = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizer, $encoder);
+
         return $this->render('default/guildies.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'users' => $array,
-            'test' => $test
+            'test' => $test,
+            'serializer' => $serializer
         ));
     }
 
