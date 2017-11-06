@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\User;
@@ -95,7 +95,7 @@ class DefaultController extends Controller
             $test = "TEST";
         }
 
-        $encoders = array(new jsonEncoder());
+        $encoder = array(new jsonEncoder());
         $normalizer = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizer, $encoder);
         $array = $serializer->serialize($array, 'json');
