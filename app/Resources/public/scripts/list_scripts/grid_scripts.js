@@ -6,8 +6,10 @@ $(document).ready(function(){
       });
     }
   }
-
-  db.users = "<?php echo $users ?>";
+  if(document.getElementById(users) != null) {
+    db.users = document.getElementById(users);
+    console.log(db.users);
+  }
 
   $("#grid").jsGrid({
     filtering: true,
@@ -15,7 +17,7 @@ $(document).ready(function(){
     sorting: true,
     autoload: true,
 
-    controller: "<?php echo $users ?>",
+    controller: db.users,
 
     fields: [
       { name: "username", type: "text", textField: "Username" },
