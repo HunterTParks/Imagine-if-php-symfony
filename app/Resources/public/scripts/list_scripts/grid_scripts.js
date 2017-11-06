@@ -6,10 +6,8 @@ $(document).ready(function(){
       });
     }
   }
-  if(document.getElementById(users) != null) {
-    db.users = document.getElementById(users);
-    console.log(db.users);
-  }
+  db.users = document.getElementById(users);
+  console.log(db.users);
 
   $("#grid").jsGrid({
     filtering: true,
