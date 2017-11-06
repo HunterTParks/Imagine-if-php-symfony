@@ -6,7 +6,7 @@ $(document).ready(function(){
       });
     }
   }
-  db.users = document.getElementById(users);
+  db.users = document.getElementById("users");
   console.log(db.users);
 
   $("#grid").jsGrid({
