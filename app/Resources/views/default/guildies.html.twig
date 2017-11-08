@@ -8,41 +8,48 @@
 {% block content %}
     {{ parent() }}
     <div id="grid"></div>
-    {% for user in users %}
-      <p>{{ user.username }}</p>
-    {% else %}
+    <div id="users">
+      {% for user in users %}
+      <p>{{ user.username}}</p>
+      {% else %}
       <p>No users found</p>
-    {% endfor %}
+      {% endfor %}
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(document).ready(function(){
-          var db = {
-            loadData: function(filter) {
-              return $.grep(this.users, function(user) {
-                return (!filter.username || user.username.indexOf(filter.username) > -1);
-              });
-            }
+    {% javascripts '%kernel.root_dir%/Resources/public/scripts/list_scripts/*'%}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        var db = {
+          loadData: function(filter) {
+            return $.grep(this.users, function(user) {
+              return (!filter.username || user.username.indexOf(filter.username) > -1);
+            });
           }
+        }
 
-          db.users = <?php echo $users ?>;
-          console.log(db.users);
+        test = {{ serial | raw }}
+        db.users = JSON.stringify(test);
+        console.log(db.users);
+        console.log(test);
 
-          $("#grid").jsGrid({
-            filtering: true,
-            editing: false,
-            sorting: true,
-            autoload: true,
+        $("#grid").jsGrid({
+          filtering: true,
+          editing: false,
+          sorting: true,
+          autoload: true,
 
-            controller: db.users,
+          data: test,
 
-            fields: [
-              { name: "username", type: "text", textField: "Username" },
-              { name: "email", type: "text", textField: "Email" },
-              { name: "isActive", type: "number", textField: "is Active" }
-            ]
-          });
+          fields: [
+            { name: "username", type: "text", textField: "Username" },
+            { name: "email", type: "text", textField: "Email" },
+            { name: "isActive", type: "number", textField: "is Active" }
+          ]
         });
-    </script>
+      });
+      </script>
+    {% endjavascripts %}
 {% endblock %}
