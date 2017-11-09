@@ -1,0 +1,15 @@
+#background-image {
+    position: absolute;
+}
+
+.main {
+    position: relative;
+}
+
+#header {
+    position: relative;
+}
+
+body {
+  margin: 0px;
+}
