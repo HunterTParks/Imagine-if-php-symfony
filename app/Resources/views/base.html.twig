@@ -14,7 +14,7 @@
     </head>
     <body>
         {% block content %}
-            {% image '@AppBundle/Resources/public/images/placeholder.png' output='/images/placeholder.png'%}
+            {% image '%kernel.root_dir%/Resources/public/images/placeholder.png' output='/images/placeholder.png'%}
                 <img src="{{ asset_url }}" alt="placeholderimage" />
             {% endimage %}
             <header>
