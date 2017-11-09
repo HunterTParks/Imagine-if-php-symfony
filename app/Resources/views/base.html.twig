@@ -14,8 +14,8 @@
     </head>
     <body>
         {% block content %}
-            {% image %}
-                
+            {% image '@AppBundle/Resources/public/images/placeholder.png' output='/images/placeholder.png'%}
+                <img src="{{ asset_url }}" alt="placeholderimage" />
             {% endimage %}
             <header>
               <a href="/">Home</a>
