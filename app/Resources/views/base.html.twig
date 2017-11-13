@@ -20,14 +20,12 @@
                 {% endimage %}
                 <header id="header">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="/">Home</a>
-                            <a href="/guildies">Testing</a>
-                            <a href="{{ logout_path() }}">logout</a>
+                        <a href="/">Home</a>
+                        <a href="/guildies">Testing</a>
+                        <a href="{{ logout_path() }}">logout</a>
                     {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-                        <header id="header">
-                            <a href="/login">Login</a>
-                            <a href="/register">Register an account</a>
-                        </header>
+                        <a href="/login">Login</a>
+                        <a href="/register">Register an account</a>
                     {% endif %}
               </header>
             </div>
