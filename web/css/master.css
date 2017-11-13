@@ -1,15 +1,38 @@
-#background-image {
-    position: absolute;
-}
+@media screen and (min-width: 1920px) {
+    #background-image {
+        position: absolute;
+        background-size: 1920px 1080px;
+    }
 
-.main {
-    position: relative;
-}
+    .main {
+        position: relative;
+    }
 
-#header {
-    position: relative;
-}
+    #header {
+        position: relative;
+    }
 
-body {
-  margin: 0px;
+    body {
+        margin: 0px;
+    }
+}
+@media screen and (min-width: 1366px) {
+    #background-image {
+        /*position: absolute;*/
+        width: 1366px;
+        height: auto;
+        background-size: contain;
+    }
+
+    .main {
+        position: relative;
+    }
+
+    #header {
+        position: relative;
+    }
+
+    body {
+        margin: 0px;
+    }
 }
