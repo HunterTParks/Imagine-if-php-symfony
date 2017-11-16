@@ -11,7 +11,15 @@
     margin: 0px;
 }
 
-.login_item {
+#nav_list {
+    float: left;
+    text-align: center;
+    height: 100%;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+.login_item, .nav_item {
     display: inline-block;
     background-color: white;
     width: 120px;
