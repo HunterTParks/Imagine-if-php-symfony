@@ -1,11 +1,30 @@
 #header {
     background-color: black;
     height: 40px;
+    width: 100%;
 }
 
 #login_list {
-    border: 1px solid black;
+    float: right;
+    text-align: center;
+    height: 100%;
+    margin: 0px;
+}
+
+.login_item {
+    display: inline-block;
     background-color: white;
+    width: 120px;
+    margin: 0px;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text_list {
+    display: table-cell;
+    height: 40px;
+    vertical-align: middle;
 }
 
 @media screen and (min-width: 1920px) {

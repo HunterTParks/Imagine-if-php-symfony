@@ -27,8 +27,8 @@
                         </ul>
                     {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
                         <ul id="login_list">
-                            <li class="login_item"><a href="/login">Login</a></li>
-                            <li class="login_item"><a href="/register">Register an account</a></li>
+                            <li class="login_item"><a href="/login"><span class="text_list">Login</span></a></li>
+                            <li class="login_item"><a href="/register"><span class="text_list">Register</span></a></li>
                         </ul>
                     {% endif %}
               </header>
