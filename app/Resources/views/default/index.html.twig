@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
-{% endblock %}
 {% block content %}
     {{ parent() }}
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
+    {% endblock %}
     <div class="dashboard">
         testing
     </div>

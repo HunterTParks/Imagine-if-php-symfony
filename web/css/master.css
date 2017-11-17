@@ -37,7 +37,7 @@
 
 @media screen and (min-width: 1920px) {
     #background-image {
-        position: absolute;
+        position: fixed;
         background-size: 1920px 1080px;
     }
 
@@ -55,7 +55,7 @@
 }
 @media screen and (min-width: 1366px) {
     #background-image {
-        position: absolute;
+        position: fixed;
         width: 1366px;
         height: auto;
         background-size: contain;
